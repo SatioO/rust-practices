@@ -12,11 +12,25 @@ fn main() {
         status: true,
     };
 
-    let user2 = build_user(user1);
-    println!("{}", user2);
-    // println!("name: {}, age: {}", user1.name, user1.age);
+    let user2 = build_user(&user1);
+    println!(
+        "name: {}, age: {}, status: {}",
+        user2.name, user2.age, user2.status
+    );
+
+    println!(
+        "name: {}, age: {}, status: {}",
+        user1.name, user1.age, user1.status
+    );
+
+    let User { name, age, status } = user1;
+    println!("name: {}, age: {}, status: {}", name, age, status);
 }
 
-fn build_user(user: User) -> String {
-    user.name
+fn build_user(user: &User) -> User {
+    User {
+        name: String::from("Rohit"),
+        age: user.age,
+        status: user.status,
+    }
 }

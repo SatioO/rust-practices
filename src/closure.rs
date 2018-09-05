@@ -6,6 +6,7 @@ where
     f();
 }
 
+
 fn add<F>(f: F) -> i32 where F: Fn(i32) -> i32 {
     f(3);
 }

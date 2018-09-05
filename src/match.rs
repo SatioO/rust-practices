@@ -8,6 +8,17 @@ enum Direction {
     Left(Point),
 }
 
+impl Direction {
+    fn match_direction(&self) -> &Point {
+        match self {
+            Direction::Up(point) => point,
+            Direction::Down(point) => point,
+            Direction::Right(point) => point,
+            Direction::Left(point) => point,
+        }
+    }
+}
+
 #[derive(Debug)]
 enum Keys {
     UpKey,
@@ -25,6 +36,10 @@ struct Point {
 fn main() {
     let point = Point { x: 30, y: 40 };
     let direction = Direction::Down(Point { x: 30, y: 40 });
+
+    // implementation of direction
+    let direction1 = direction.match_direction();
+    println!("{:?}", direction1);
 
     let key = Keys::RightKey;
     let pressed = match key {

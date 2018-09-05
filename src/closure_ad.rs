@@ -22,8 +22,12 @@ where
 
 fn main() {
     // closure without params
-    let f = || println!("called after run");
-    run(f);
+    fn pr() {
+        println!("called normal function")
+    }
+
+    let p = || println!("called after run");
+    run(p);
 
     // closure with params
     let x = |x| x * x;

@@ -13,13 +13,26 @@ where
     f(3)
 }
 
+fn mul<F>(num: i32, f: F) -> i32
+where
+    F: Fn(i32) -> i32,
+{
+    f(num)
+}
+
 fn main() {
     // closure without params
     let f = || println!("called after run");
     run(f);
 
     // closure with params
-    let x = |x| x + 10;
+    let x = |x| x * x;
     let result = add(x);
+    println!("result: {:?}", result);
+
+    // closure with params
+    let y = |x| x + 10;
+    let num = 10;
+    let result = mul(num, y);
     println!("result: {:?}", result)
 }
